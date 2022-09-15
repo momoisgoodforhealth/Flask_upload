@@ -17,7 +17,7 @@ def allowed_file(filename):
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
-
+    a=False
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
@@ -30,18 +30,19 @@ def upload_file():
             flash('No selected file') 
             return redirect(request.url)
         if file and allowed_file(file.filename):
+
             text = request.form['name']
             processed_text = text.upper()
 
             textfile = open("/home/momoisgoodforhealth/Flask_upload/b.txt", "w")
             textfile.write(processed_text)
-            textfile.close
 
-            shutil.copy2('/home/momoisgoodforhealth/Flask_upload/b.txt', '/home/momoisgoodforhealth/Flask_upload/newname.txt')
+            
 
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename))
             #return redirect(url_for('download_file', name=filename))
+            shutil.copy2('/home/momoisgoodforhealth/Flask_upload/b.txt', '/home/momoisgoodforhealth/Flask_upload/newname.txt')
             return processed_text
     return '''
     <!doctype html>
