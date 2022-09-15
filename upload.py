@@ -35,8 +35,10 @@ def upload_file():
 
             textfile = open("/home/momoisgoodforhealth/Flask_upload/b.txt", "w")
             textfile.write(processed_text)
+            textfile.close
 
             shutil.copy2('/home/momoisgoodforhealth/Flask_upload/b.txt', '/home/momoisgoodforhealth/Flask_upload/newname.txt')
+
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename))
             #return redirect(url_for('download_file', name=filename))
