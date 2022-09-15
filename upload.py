@@ -35,7 +35,7 @@ def upload_file():
             #f=open(rel_directory+'/','x')
             #f.write("some stuff I'm adding to the file")
             #f.close()
-            shutil.copy2('b.txt', 'uploads/newname.txt')
+            shutil.copy2('b.txt', 'newname.txt')
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename))
             #return redirect(url_for('download_file', name=filename))
