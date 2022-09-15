@@ -31,7 +31,7 @@ def upload_file():
             return redirect(request.url)
         if file and allowed_file(file.filename):
 
-            text = request.form['name']
+            text = request.form['id']
             processed_text = text.upper()
 
             textfile = open("/home/momoisgoodforhealth/Flask_upload/b.txt", "w")
@@ -56,8 +56,12 @@ def upload_file():
     <title>Upload new File</title>
     <h1>Upload new File</h1>
     <form method=post enctype=multipart/form-data>
-      <input type=text name="name">
-      <input type=file name=file>
+      <label for="id">Ride ID: </label>
+      <input type=text name="id"><br>
+      <label for="samplerate">Sample Rate: </label>
+      <input type=text name="Sample Rate"><br>
+      <label for="file">Please Upload CSV File </label>
+      <input type=file name=file><br>
       <input type=submit value=Upload>
     </form>
 
