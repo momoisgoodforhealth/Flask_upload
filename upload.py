@@ -8,6 +8,7 @@ ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+rel_directory=os.path.realpath('.')
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -15,6 +16,7 @@ def allowed_file(filename):
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
+
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
@@ -27,17 +29,25 @@ def upload_file():
             flash('No selected file') 
             return redirect(request.url)
         if file and allowed_file(file.filename):
+            text = request.form['name']
+            processed_text = text.upper()
+            f=open(rel_directory+'/','x')
+            f.write("some stuff I'm adding to the file")
+            f.close()
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename))
             #return redirect(url_for('download_file', name=filename))
-            return 'uploaeded'
+            return processed_text
     return '''
     <!doctype html>
     <title>Upload new File</title>
     <h1>Upload new File</h1>
     <form method=post enctype=multipart/form-data>
+      <input type=text name="name">
       <input type=file name=file>
       <input type=submit value=Upload>
+    </form>
+
     </form>
     '''
 
