@@ -32,9 +32,10 @@ def upload_file():
         if file and allowed_file(file.filename):
             text = request.form['name']
             processed_text = text.upper()
-            #f=open(rel_directory+'/','x')
-            #f.write("some stuff I'm adding to the file")
-            #f.close()
+
+            textfile = open("/home/momoisgoodforhealth/Flask_upload/b.txt", "w")
+            textfile.write(processed_text)
+
             shutil.copy2('/home/momoisgoodforhealth/Flask_upload/b.txt', '/home/momoisgoodforhealth/Flask_upload/newname.txt')
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename))
