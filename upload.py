@@ -38,7 +38,7 @@ def upload_file():
             textfile.write(processed_text)
 
            
-            shutil.copyfile('/home/momoisgoodforhealth/Flask_upload/b.txt', '/home/momoisgoodforhealth/Flask_upload/'+processed_text+".txt"
+            shutil.copyfile('/home/momoisgoodforhealth/Flask_upload/b.txt', '/home/momoisgoodforhealth/Flask_upload/'+processed_text+".txt")
             #textfile2 = open("/home/momoisgoodforhealth/Flask_upload/"+processed_text+".txt", "w")
             #textfile2.write(processed_text)
 
