@@ -1,6 +1,7 @@
 import os
 from flask import Flask, flash, request, redirect, url_for
 from werkzeug.utils import secure_filename
+import shutil
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
@@ -31,9 +32,10 @@ def upload_file():
         if file and allowed_file(file.filename):
             text = request.form['name']
             processed_text = text.upper()
-            f=open(rel_directory+'/','x')
-            f.write("some stuff I'm adding to the file")
-            f.close()
+            #f=open(rel_directory+'/','x')
+            #f.write("some stuff I'm adding to the file")
+            #f.close()
+            shutil.copy2('b.txt', 'uploads/newname.txt')
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename))
             #return redirect(url_for('download_file', name=filename))
