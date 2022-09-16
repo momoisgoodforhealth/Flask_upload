@@ -23,28 +23,29 @@ def upload_file():
         if 'file' not in request.files:
             flash('No file part')
             return redirect(request.url)
-        file = request.files['file']
+        files = request.files['file'].getlist("file") #added
         # If the user does not select a file, the browser submits an
         # empty file without a filename.
-        if file.filename == '':
-            flash('No selected file') 
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
+        for file in files:   #added
+            if file.filename == '':
+                flash('No selected file') 
+                return redirect(request.url)
+            if file and allowed_file(file.filename):
 
-            text = request.form['id']
-            processed_text = text.upper()
+                text = request.form['id']
+                processed_text = text.upper()
 
-            textfile = open("/home/momoisgoodforhealth/Flask_upload/b.txt", "w")
-            textfile.write(processed_text)
+                textfile = open("/home/momoisgoodforhealth/Flask_upload/b.txt", "w")
+                textfile.write(processed_text)
 
            
-            shutil.copy('/home/momoisgoodforhealth/Flask_upload/b.txt', '/home/momoisgoodforhealth/Flask_upload/'+processed_text+".txt")
-            textfile2 = open("/home/momoisgoodforhealth/Flask_upload/"+processed_text+".txt", "w")
-            textfile2.write(processed_text)
+                shutil.copy('/home/momoisgoodforhealth/Flask_upload/b.txt', '/home/momoisgoodforhealth/Flask_upload/'+processed_text+".txt")
+                textfile2 = open("/home/momoisgoodforhealth/Flask_upload/"+processed_text+".txt", "w")
+                textfile2.write(processed_text)
 
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename))
-            #return redirect(url_for('download_file', name=filename))
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename))
+                #return redirect(url_for('download_file', name=filename))
             
 
 
