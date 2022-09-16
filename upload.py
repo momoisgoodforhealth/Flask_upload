@@ -30,18 +30,29 @@ def upload_file():
         # If the user does not select a file, the browser submits an
         # empty file without a filename.
         for filer in files:   #added
-            count=count+1
-            filename = secure_filename(filer.filename)
-            filer.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename))
-            text = request.form['id']
-        #    if file.filename == '':
+            #count=count+1
+            #filename = secure_filename(filer.filename) 
+            #filer.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'],filename))
+            #text = request.form['id']
          #       flash('No selected file') 
           #      return redirect(request.url)
             if filer and allowed_file(filer.filename):
-                filename = secure_filename(filer.filename)
-                filer.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename))
+
+
+                
                 text = request.form['id']
                 processed_text = text.upper()
+                folder=processed_text+"/"
+
+                path = os.getcwd()
+                UPLOAD_FOLDER = os.path.join(path, 'uploads/',folder)
+                # Make directory if uploads is not exists
+                if not os.path.isdir(UPLOAD_FOLDER):
+                    os.mkdir(UPLOAD_FOLDER)
+                app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+                filename = secure_filename(filer.filename)
+                filer.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
                 #textfile = open("b.txt", "w")
                 textfile = open("/home/momoisgoodforhealth/Flask_upload/b.txt", "w")
                 textfile.write(processed_text)
@@ -67,6 +78,12 @@ def upload_file():
       <input type=text name="id"><br>
       <label for="samplerate">Sample Rate: </label>
       <input type=text name="Sample Rate"><br>
+      <label for="Ginterval">G Interval: </label>
+      <input type=text name="Ginterval"><br>
+      <label for="lowextent">Low Extent: </label>
+      <input type=text name="lowextent"><br>
+      <label for="highextent">High Extent: </label>
+      <input type=text name="highextent"><br>
       <label for="files[]">Please Upload CSV File </label>
       <input type=file name="files[]" multiple="true"><br>
       <input type=submit value=Upload>
