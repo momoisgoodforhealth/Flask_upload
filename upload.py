@@ -30,29 +30,29 @@ def upload_file():
         # If the user does not select a file, the browser submits an
         # empty file without a filename.
         for filer in files:   #added
-            #count=count+1
+            count=count+1
             #filename = secure_filename(filer.filename) 
             #filer.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'],filename))
             #text = request.form['id']
+        #    if file.filename == '':
          #       flash('No selected file') 
           #      return redirect(request.url)
             if filer and allowed_file(filer.filename):
+                filename = secure_filename(filer.filename)
 
+               
 
-                
+                #filer.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename))
                 text = request.form['id']
                 processed_text = text.upper()
+
                 folder=processed_text+"/"
-
-                path = os.getcwd()
-                UPLOAD_FOLDER = os.path.join(path, 'uploads/',folder)
-                # Make directory if uploads is not exists
-                if not os.path.isdir(UPLOAD_FOLDER):
-                    os.mkdir(UPLOAD_FOLDER)
-                app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-                filename = secure_filename(filer.filename)
-                filer.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
+                UPLOAD_FOLDER2=os.path.join(app.root_path,'uploads/', folder)
+                if not os.path.isdir(UPLOAD_FOLDER2):
+                    os.mkdir(UPLOAD_FOLDER2)
+                
+                app.config['UPLOAD_FOLDER2']=UPLOAD_FOLDER2
+                filer.save(os.path.join(app.config['UPLOAD_FOLDER2'], filename))
                 #textfile = open("b.txt", "w")
                 textfile = open("/home/momoisgoodforhealth/Flask_upload/b.txt", "w")
                 textfile.write(processed_text)
