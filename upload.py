@@ -45,7 +45,7 @@ def upload_file():
                 #textfile = open("b.txt", "w")
                 textfile = open("/home/momoisgoodforhealth/Flask_upload/b.txt", "w")
                 textfile.write(processed_text)
-                shutil.copy('b.txt',processed_text+".txt")
+                #shutil.copy('b.txt',processed_text+".txt")
                 #textfile2 = open(processed_text+".txt", "w")
                 #textfile2.write(str(count))
            
