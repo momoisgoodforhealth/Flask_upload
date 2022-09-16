@@ -1,5 +1,5 @@
 import os
-from flask import Flask, flash, request, redirect, url_for
+from flask import Flask, flash, request, redirect,render_template, url_for
 from werkzeug.utils import secure_filename
 import shutil
 
@@ -11,45 +11,52 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 rel_directory=os.path.realpath('.')
 
+
+
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
-    #a=False
+    count=0
     if request.method == 'POST':
         # check if the post request has the file part
-        if 'file' not in request.files:
+        if 'files[]' not in request.files:
             flash('No file part')
             return redirect(request.url)
-        files = request.files['file'].getlist("file") #added
+        #files = request.files['file'].getlist("file") #added
+        files = request.files.getlist('files[]')
+
         # If the user does not select a file, the browser submits an
         # empty file without a filename.
-        for file in files:   #added
-            if file.filename == '':
-                flash('No selected file') 
-                return redirect(request.url)
-            if file and allowed_file(file.filename):
-
+        for filer in files:   #added
+            count=count+1
+            filename = secure_filename(filer.filename)
+            filer.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename))
+            text = request.form['id']
+        #    if file.filename == '':
+         #       flash('No selected file') 
+          #      return redirect(request.url)
+            if filer and allowed_file(filer.filename):
+                filename = secure_filename(filer.filename)
+                filer.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename))
                 text = request.form['id']
                 processed_text = text.upper()
-
+                #textfile = open("b.txt", "w")
                 textfile = open("/home/momoisgoodforhealth/Flask_upload/b.txt", "w")
                 textfile.write(processed_text)
-
+                shutil.copy('b.txt',processed_text+".txt")
+                #textfile2 = open(processed_text+".txt", "w")
+                #textfile2.write(str(count))
            
                 shutil.copy('/home/momoisgoodforhealth/Flask_upload/b.txt', '/home/momoisgoodforhealth/Flask_upload/'+processed_text+".txt")
                 textfile2 = open("/home/momoisgoodforhealth/Flask_upload/"+processed_text+".txt", "w")
                 textfile2.write(processed_text)
-
-                filename = secure_filename(file.filename)
-                file.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename))
                 #return redirect(url_for('download_file', name=filename))
-            
 
 
-            return processed_text
+        return processed_text
 
 
     return '''
@@ -61,8 +68,8 @@ def upload_file():
       <input type=text name="id"><br>
       <label for="samplerate">Sample Rate: </label>
       <input type=text name="Sample Rate"><br>
-      <label for="file">Please Upload CSV File </label>
-      <input type=file name=file multiple=""><br>
+      <label for="files[]">Please Upload CSV File </label>
+      <input type=file name="files[]" multiple="true"><br>
       <input type=submit value=Upload>
     </form>
 
