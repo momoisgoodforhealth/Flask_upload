@@ -25,7 +25,6 @@ def upload_file():
         if 'files[]' not in request.files:
             flash('No file part')
             return redirect(request.url)
-        #files = request.files['file'].getlist("file") #added
         files = request.files.getlist('files[]')
 
         # If the user does not select a file, the browser submits an
