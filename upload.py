@@ -62,7 +62,7 @@ def upload_file():
       <label for="samplerate">Sample Rate: </label>
       <input type=text name="Sample Rate"><br>
       <label for="file">Please Upload CSV File </label>
-      <input type=file name=file><br>
+      <input type=file name=file multiple=""><br>
       <input type=submit value=Upload>
     </form>
 
