@@ -60,8 +60,8 @@ def upload_file():
                 #textfile2 = open(processed_text+".txt", "w")
                 #textfile2.write(str(count))
            
-                shutil.copy('/home/momoisgoodforhealth/Flask_upload/b.txt', '/home/momoisgoodforhealth/Flask_upload/'+processed_text+"/"+processed_text+".txt")
-                textfile2 = open("/home/momoisgoodforhealth/Flask_upload/"+processed_text+"/"+processed_text+".txt", "w")
+                shutil.copy('/home/momoisgoodforhealth/Flask_upload/b.txt', '/home/momoisgoodforhealth/Flask_upload/'+folder+processed_text+".txt")
+                textfile2 = open("/home/momoisgoodforhealth/Flask_upload/"+folder+processed_text+".txt", "w")
                 textfile2.write(processed_text)
                 #return redirect(url_for('download_file', name=filename))
 
