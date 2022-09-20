@@ -135,13 +135,13 @@ for path in os.listdir(dir_path):
 
 @app.route('/downloads/', methods = ['GET', 'POST'])
 def list_folders():
-    shutil.make_archive('/home/momoisgoodforhealth/Flask_upload/assets/789zip','zip','/home/momoisgoodforhealth/Flask_upload/uploads/789')
+    shutil.make_archive('/home/momoisgoodforhealth/Flask_upload/uploads/789zip','zip','/home/momoisgoodforhealth/Flask_upload/uploads/789')
     #return send_from_directory(app.config["UPLOAD_FOLDER"], name)
     return render_template("list.html", data=rideids)
 
 @app.route('/789/', methods = ['GET', 'POST'])
 def download_file():
-    return send_file("/home/momoisgoodforhealth/Flask_upload/assets/789zip.zip", as_attachment=True, download_name=name)
+    return send_file("/home/momoisgoodforhealth/Flask_upload/uploads/789zip.zip", as_attachment=True, download_name=name)
 
 
 
