@@ -139,7 +139,7 @@ def list_folders():
     #return send_from_directory(app.config["UPLOAD_FOLDER"], name)
     return render_template("list.html", data=rideids)
 
-@app.route('static/789/', methods = ['GET', 'POST'])
+@app.route('/static/789/', methods = ['GET', 'POST'])
 def download_file():
     return send_file("/home/momoisgoodforhealth/Flask_upload/assets/789zip.zip", as_attachment=True, download_name=name)
 
