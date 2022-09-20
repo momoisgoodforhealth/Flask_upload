@@ -90,13 +90,17 @@ def upload_file():
       <input type=file name="files[]" multiple="true"><br>
       <input type=submit value=Upload>
     </form>
-
     </form>
     '''
 
 
 from flask import send_from_directory
 
-@app.route('/uploads/')
+@app.route('/downloads/')
 def download_file(name):
-    return send_from_directory(app.config["UPLOAD_FOLDER"], name)
+    #return send_from_directory(app.config["UPLOAD_FOLDER"], name)
+    return '''
+    <!doctype html>
+    <title>Uploads Site</title>
+    <h1>Download from the following</h1>
+    '''
