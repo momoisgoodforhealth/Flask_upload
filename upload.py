@@ -43,8 +43,8 @@ def upload_file():
                
 
                 #filer.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename))
-                id = request.form['id']
-                processed_text = id.upper()
+                text = request.form['id']
+                processed_text = text.upper()
                 ridetype= request.form['type'].upper()
                 date=request.form['date'].upper()
                 filterfreq=request.form['filter'].upper()
