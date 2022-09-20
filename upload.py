@@ -43,8 +43,15 @@ def upload_file():
                
 
                 #filer.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename))
-                text = request.form['id']
-                processed_text = text.upper()
+                id = request.form['id']
+                processed_text = id.upper()
+                ridetype= request.form['type'].upper()
+                date=request.form['date'].upper()
+                filterfreq=request.form['filter'].upper()
+                rate=request.form['SampleRate'].upper()
+                ginterval=request.form['ginterval'].upper()
+                lowext=request.form['lowextent'].upper()
+                highext=request.form['highextent'].upper()
 
 
                 folder=processed_text+"/"
@@ -56,23 +63,14 @@ def upload_file():
                 filer.save(os.path.join(app.config['UPLOAD_FOLDER2'], filename))
                 #textfile = open("b.txt", "w")
                 textfile = open("/home/momoisgoodforhealth/Flask_upload/b.txt", "w")
-                textfile.write(processed_text)
-                textfile.write('/n')
-                #textfile.write(request.form['type'])
-                textfile.write('/n')
-                #textfile.write(request.form['date'])
-                textfile.write('/n')
-                #textfile.write(request.form['filter'])
-                textfile.write('/n')
-                #textfile.write(request.form['samplerate'])
-                textfile.write('/n')
-                #textfile.write(request.form['Ginterval'])
-                textfile.write('/n')
-                #textfile.write(request.form['samplerate'])
-                textfile.write('/n')
-                #textfile.write(request.form['lowextent'])
-                textfile.write('/n')
-                #textfile.write(request.form['highextent'])
+                textfile.write(processed_text+"\n")
+                textfile.write(ridetype+"\n")
+                textfile.write(date+"\n")
+                textfile.write(filterfreq+"\n")
+                textfile.write(rate+"\n")
+                textfile.write(ginterval+"\n")
+                textfile.write(lowext+"\n")
+                textfile.write(highext+"\n")
 
                 
                 #shutil.copy('b.txt',processed_text+".txt")
@@ -115,12 +113,12 @@ def upload_file():
 
       
       <label for="date">Data Date:</label>
-      <input type="date" id="date" name="date">
+      <input type="date" id="date" name="date"><br>
 
       <label for="filter">Filter Frequency: </label>
       <input type=text name="filter"><br>
       <label for="samplerate">Sample Rate: </label>
-      <input type=text name="Sample Rate"><br>
+      <input type=text name="SampleRate"><br>
       <label for="Ginterval">G Interval: </label>
       <input type=text name="Ginterval"><br>
       <label for="lowextent">Low Extent: </label>
