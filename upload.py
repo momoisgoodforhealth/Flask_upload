@@ -60,7 +60,7 @@ def upload_file():
                 textfile.write('/n')
                 textfile.write(request.form['type'])
                 textfile.write('/n')
-                textfile.write(request.form['date'])
+                #textfile.write(request.form['date'])
                 textfile.write('/n')
                 textfile.write(request.form['filter'])
                 textfile.write('/n')
