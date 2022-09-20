@@ -64,13 +64,6 @@ def upload_file():
                 #textfile = open("b.txt", "w")
                 textfile = open("/home/momoisgoodforhealth/Flask_upload/b.txt", "w")
                 textfile.write(processed_text+"\n"+ridetype+"\n"+date+"\n"+filterfreq+"\n"+rate+"\n"+ginterval+"\n"+lowext+"\n"+highext)
-               #textfile.write(ridetype+"\n")
-                #textfile.write(date+"\n")
-                #textfile.write(filterfreq+"\n")
-                #textfile.write(rate+"\n")
-                #textfile.write(ginterval+"\n")
-                #textfile.write(lowext+"\n")
-                #textfile.write(highext+"\n")
 
                 
                 #shutil.copy('b.txt',processed_text+".txt")
@@ -81,7 +74,7 @@ def upload_file():
                 #textfile2 = open("/home/momoisgoodforhealth/Flask_upload/"+folder+processed_text+".txt", "w")
                 shutil.copy('/home/momoisgoodforhealth/Flask_upload/b.txt', UPLOAD_FOLDER2+processed_text+".txt")
                 textfile2 = open(UPLOAD_FOLDER2+processed_text+".txt", "w")
-                textfile2.write(processed_text)
+                textfile2.write(processed_text+"\n"+ridetype+"\n"+date+"\n"+filterfreq+"\n"+rate+"\n"+ginterval+"\n"+lowext+"\n"+highext)
                 #return redirect(url_for('download_file', name=filename))
 
 
