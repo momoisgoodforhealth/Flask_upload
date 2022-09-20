@@ -47,11 +47,11 @@ def upload_file():
                 processed_text = text.upper()
                 #ridetype= request.form['type'].upper()
                 #date=request.form['date'].upper()
-                filterfreq=request.form['filter'].upper()
-                rate=request.form['SampleRate'].upper()
-                ginterval=request.form['ginterval'].upper()
-                lowext=request.form['lowextent'].upper()
-                highext=request.form['highextent'].upper()
+                #filterfreq=request.form['filter'].upper()
+                #rate=request.form['SampleRate'].upper()
+                #ginterval=request.form['ginterval'].upper()
+                #lowext=request.form['lowextent'].upper()
+                #highext=request.form['highextent'].upper()
 
 
                 folder=processed_text+"/"
