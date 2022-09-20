@@ -65,12 +65,12 @@ def upload_file():
                 textfile = open("/home/momoisgoodforhealth/Flask_upload/b.txt", "w")
                 textfile.write(processed_text+"\n")
                 textfile.write(ridetype+"\n")
-                textfile.write(date+"\n")
-                textfile.write(filterfreq+"\n")
-                textfile.write(rate+"\n")
-                textfile.write(ginterval+"\n")
-                textfile.write(lowext+"\n")
-                textfile.write(highext+"\n")
+                #textfile.write(date+"\n")
+                #textfile.write(filterfreq+"\n")
+                #textfile.write(rate+"\n")
+                #textfile.write(ginterval+"\n")
+                #textfile.write(lowext+"\n")
+                #textfile.write(highext+"\n")
 
                 
                 #shutil.copy('b.txt',processed_text+".txt")
