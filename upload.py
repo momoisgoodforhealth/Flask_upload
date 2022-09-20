@@ -73,6 +73,7 @@ def upload_file():
 
     return '''
     <!doctype html>
+    <a href="/downloads">Downloads</a>
     <title>Upload new File</title>
     <h1>Upload new File</h1>
     <button id="downloadbutton" type="button" onclick="/download" class="button">DOWNLOADS</button>
