@@ -63,7 +63,7 @@ def upload_file():
                 filer.save(os.path.join(app.config['UPLOAD_FOLDER2'], filename))
                 #textfile = open("b.txt", "w")
                 textfile = open("/home/momoisgoodforhealth/Flask_upload/b.txt", "w")
-                textfile.write(processed_text+"\n"+rate+"\n")
+                textfile.write(processed_text+"\n"+"Wgat is going on")
                #textfile.write(ridetype+"\n")
                 #textfile.write(date+"\n")
                 #textfile.write(filterfreq+"\n")
