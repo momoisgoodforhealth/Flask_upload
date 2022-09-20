@@ -76,10 +76,16 @@ def upload_file():
     <a href="/downloads">Downloads</a>
     <title>Upload new File</title>
     <h1>Upload new File</h1>
-    <button id="downloadbutton" type="button" onclick="/download" class="button">DOWNLOADS</button>
     <form method=post enctype=multipart/form-data>
       <label for="id">Ride ID: </label>
-      <input type=text name="id"><br>
+      <input type="text" list="id" name="id" />
+        <datalist id="id">
+        <option>901</option>
+        <option>801</option>
+        <option>701</option>
+        <option>501</option>
+        </datalist>
+      <input type=text name="id"><br>n
       <label for="samplerate">Sample Rate: </label>
       <input type=text name="Sample Rate"><br>
       <label for="Ginterval">G Interval: </label>
