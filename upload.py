@@ -74,7 +74,7 @@ def upload_file():
                 #textfile2 = open("/home/momoisgoodforhealth/Flask_upload/"+folder+processed_text+".txt", "w")
                 shutil.copy('/home/momoisgoodforhealth/Flask_upload/b.txt', UPLOAD_FOLDER2+processed_text+".txt")
                 textfile2 = open(UPLOAD_FOLDER2+processed_text+".txt", "w")
-                textfile2.write("RIDEID="+processed_text+"RIDETYPE="+"\n"+ridetype+"\n"+"DATE="+date+"\n"+"FILTER FREQUENCY="+filterfreq+"\n"+"RATE="+rate+"\n"+"G INTERVAL="+ginterval+"\n"+"LOW EXTENT="+lowext+"\n"+"HIGH EXTENT="+highext)
+                textfile2.write("RIDEID="+processed_text+"\n"+"RIDETYPE="+ridetype+"\n"+"DATE="+date+"\n"+"FILTER FREQUENCY="+filterfreq+"\n"+"RATE="+rate+"\n"+"G INTERVAL="+ginterval+"\n"+"LOW EXTENT="+lowext+"\n"+"HIGH EXTENT="+highext)
                 #return redirect(url_for('download_file', name=filename))
 
 
