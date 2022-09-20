@@ -45,12 +45,12 @@ def upload_file():
                 #filer.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename))
                 text = request.form['id']
                 processed_text = text.upper()
-                #ridetype= request.form['type'].upper()
-                #date=request.form['datadate'].upper()
-                #filterfreq=request.form['filter'].upper()
-                #rate=request.form['SampleRate'].upper()
-                #ginterval=request.form['ginterval'].upper()
-                #lowext=request.form['lowextent'].upper()
+                ridetype= request.form['type'].upper()
+                date=request.form['datadate'].upper()
+                filterfreq=request.form['filter'].upper()
+                rate=request.form['SampleRate'].upper()
+                ginterval=request.form['Ginterval'].upper()
+                lowext=request.form['lowextent'].upper()
                 highext=request.form['highextent'].upper()
 
 
@@ -63,7 +63,7 @@ def upload_file():
                 filer.save(os.path.join(app.config['UPLOAD_FOLDER2'], filename))
                 #textfile = open("b.txt", "w")
                 textfile = open("/home/momoisgoodforhealth/Flask_upload/b.txt", "w")
-                textfile.write(processed_text+highext)
+                textfile.write(processed_text+"\n"+idetype+"\n"+date+"\n"+filterfreq+"\n"+rate+"\n"+ginterval+"\n"+lowext+"\n"+highext)
                #textfile.write(ridetype+"\n")
                 #textfile.write(date+"\n")
                 #textfile.write(filterfreq+"\n")
@@ -112,7 +112,7 @@ def upload_file():
         </datalist><br>
 
       
-      <label for="date">Data Date:</label>
+      <label for="datadate">Data Date:</label>
       <input type="date" id="datadate" name="datadate"><br>
 
       <label for="filter">Filter Frequency: </label>
