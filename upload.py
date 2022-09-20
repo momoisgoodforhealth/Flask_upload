@@ -45,8 +45,8 @@ def upload_file():
                 #filer.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename))
                 text = request.form['id']
                 processed_text = text.upper()
-                ridetype= request.form['type'].upper()
-                date=request.form['date'].upper()
+                #ridetype= request.form['type'].upper()
+                #date=request.form['date'].upper()
                 filterfreq=request.form['filter'].upper()
                 rate=request.form['SampleRate'].upper()
                 ginterval=request.form['ginterval'].upper()
