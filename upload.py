@@ -98,7 +98,7 @@ def upload_file():
 from flask import send_from_directory
 
 @app.route('/downloads/', methods = ['GET', 'POST'])
-def download_file(name):
+def download_file():
     #return send_from_directory(app.config["UPLOAD_FOLDER"], name)
     return '''
     <!doctype html>
