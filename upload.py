@@ -70,7 +70,7 @@ def upload_file():
 
         return processed_text
 
-
+    #<input type=text name="id"><br>n
     return '''
     <!doctype html>
     <a href="/downloads">Downloads</a>
@@ -85,7 +85,7 @@ def upload_file():
         <option>701</option>
         <option>501</option>
         </datalist>
-      <input type=text name="id"><br>n
+  
       <label for="samplerate">Sample Rate: </label>
       <input type=text name="Sample Rate"><br>
       <label for="Ginterval">G Interval: </label>
