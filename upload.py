@@ -128,12 +128,12 @@ def upload_file():
 
 
 from flask import send_from_directory
+dir_path = "/home/momoisgoodforhealth/Flask_upload/uploads"
+rideids=[]
+for path in os.listdir(dir_path):
+        rideids.append(path)
 
 @app.route('/downloads/', methods = ['GET', 'POST'])
 def download_file():
     #return send_from_directory(app.config["UPLOAD_FOLDER"], name)
-    return '''
-    <!doctype html>
-    <title>Uploads Site</title>
-    <h1>Download from the following</h1>
-    '''
+    return render_template("list.html", data=rideids)
