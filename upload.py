@@ -46,6 +46,7 @@ def upload_file():
                 text = request.form['id']
                 processed_text = text.upper()
 
+
                 folder=processed_text+"/"
                 UPLOAD_FOLDER2=os.path.join(app.root_path,'uploads/', folder)
                 if not os.path.isdir(UPLOAD_FOLDER2):
@@ -56,6 +57,24 @@ def upload_file():
                 #textfile = open("b.txt", "w")
                 textfile = open("/home/momoisgoodforhealth/Flask_upload/b.txt", "w")
                 textfile.write(processed_text)
+                textfile.write('/n')
+                textfile.write(request.form['type'])
+                textfile.write('/n')
+                textfile.write(request.form['date'])
+                textfile.write('/n')
+                textfile.write(request.form['filter'])
+                textfile.write('/n')
+                textfile.write(request.form['samplerate'])
+                textfile.write('/n')
+                textfile.write(request.form['Ginterval'])
+                textfile.write('/n')
+                textfile.write(request.form['samplerate'])
+                textfile.write('/n')
+                textfile.write(request.form['lowextent'])
+                textfile.write('/n')
+                textfile.write(request.form['highextent'])
+
+                
                 #shutil.copy('b.txt',processed_text+".txt")
                 #textfile2 = open(processed_text+".txt", "w")
                 #textfile2.write(str(count))
@@ -77,6 +96,7 @@ def upload_file():
     <title>Upload new File</title>
     <h1>Upload new File</h1>
     <form method=post enctype=multipart/form-data>
+
       <label for="id">Ride ID: </label>
       <input type="text" list="id" name="id" />
         <datalist id="id">
@@ -84,8 +104,21 @@ def upload_file():
         <option>801</option>
         <option>701</option>
         <option>501</option>
-        </datalist>
-  
+        </datalist><br>
+
+      <label for="type">Type: </label>
+      <input type="text" list="type" name="type" />
+        <datalist id="type">
+        <option>Rollercoaster</option>
+        <option>Slide</option>
+        </datalist><br>
+
+      
+      <label for="date">Data Date:</label>
+      <input type="date" id="date" name="date">
+
+      <label for="filter">Filter Frequency: </label>
+      <input type=text name="filter"><br>
       <label for="samplerate">Sample Rate: </label>
       <input type=text name="Sample Rate"><br>
       <label for="Ginterval">G Interval: </label>
@@ -94,6 +127,7 @@ def upload_file():
       <input type=text name="lowextent"><br>
       <label for="highextent">High Extent: </label>
       <input type=text name="highextent"><br>
+      <br>
       <label for="files[]">Please Upload CSV File </label>
       <input type=file name="files[]" multiple="true"><br>
       <input type=submit value=Upload><br>
