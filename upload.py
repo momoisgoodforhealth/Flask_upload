@@ -141,7 +141,7 @@ def list_folders():
 
 @app.route('/static/789/', methods = ['GET', 'POST'])
 def download_file():
-    return send_file("/home/momoisgoodforhealth/Flask_upload/assets/789zip.zip", as_attachment=True, download_name=name)
+    return send_file("/home/momoisgoodforhealth/Flask_upload/assets/789zip.zip", as_attachment=True)
 
 
 
