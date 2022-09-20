@@ -75,6 +75,7 @@ def upload_file():
     <!doctype html>
     <title>Upload new File</title>
     <h1>Upload new File</h1>
+    <button id="downloadbutton" type="button" onclick="/download" class="button">DOWNLOADS</button>
     <form method=post enctype=multipart/form-data>
       <label for="id">Ride ID: </label>
       <input type=text name="id"><br>
@@ -88,7 +89,7 @@ def upload_file():
       <input type=text name="highextent"><br>
       <label for="files[]">Please Upload CSV File </label>
       <input type=file name="files[]" multiple="true"><br>
-      <input type=submit value=Upload>
+      <input type=submit value=Upload><br>
     </form>
     </form>
     '''
@@ -96,7 +97,7 @@ def upload_file():
 
 from flask import send_from_directory
 
-@app.route('/downloads/')
+@app.route('/downloads/', methods = ['GET', 'POST'])
 def download_file(name):
     #return send_from_directory(app.config["UPLOAD_FOLDER"], name)
     return '''
